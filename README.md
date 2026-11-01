@@ -1,40 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Petto — лабораторные работы NextJS
 
-## Getting Started
+Авторы: Орищенко М.Д., Макаров А.С., группа 23ВВИ1.
 
-First, run the development server:
+Сайт: https://petto-lab3.vercel.app
 
-```bash
+## Реализовано
+
+- `/` — карточки потерянных животных, слайдер, имя пользователя в localStorage, связь с владельцем через mailto.
+- `/content` — видео YouTube (вариант 5 первой работы).
+- `/zooshops` — карта OpenStreetMap/Leaflet, маркеры и добавление магазина (вариант 1 второй работы).
+- `/api/zooshops` — GET списка, POST нового магазина, проверка названия, адреса и координат.
+
+## Запуск
+
+Требуется Node.js 22 или 24.
+
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть http://localhost:3000. Для сборки: `npm run build`, для запуска сборки: `npm start`.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Хранение данных
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Начальные магазины находятся в `public/zooshops.json`. Без облачных настроек новые записи сохраняются в этот файл локально. На Vercel используется подключённое приватное хранилище Vercel Blob: каждый новый магазин — отдельный JSON-объект. Поэтому записи сохраняются между запросами и публикациями, а одновременные добавления не перезаписывают друг друга.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Переменная `BLOB_READ_WRITE_TOKEN` задаётся подключением хранилища в Vercel, её нельзя публиковать в Git. Для работы с облаком локально: `vercel env pull .env.local`.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Публикация
 
-## Learn More
+```sh
+vercel link --project petto-lab3 --scope kodi842s-projects
+vercel deploy --prod --scope kodi842s-projects
+```
 
-To learn more about Next.js, take a look at the following resources:
+Файл `.npmrc` сохраняет режим установки для исходной учебной библиотеки слайдера. Для транзитивной библиотеки zod задана исправленная версия. На момент проверки `npm audit` не обнаруживает уязвимостей.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Приложение учебное: пользователи вводят имя без регистрации, добавление магазинов открыто. Демонстрационные данные не являются проверенным справочником.

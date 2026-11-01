@@ -1,42 +1,19 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { color: #202725; background: #f6f8f6; font-family: Arial, sans-serif; line-height: 1.5; }
+a { color: #245a42; }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; padding-bottom: 16px; }
+nav a { font-weight: 600; }
+button { background: #245a42; color: white; padding: 10px 18px; border: 0; border-radius: 6px; cursor: pointer; font: inherit; }
+button:disabled { opacity: .55; cursor: wait; }
+.shops-page { max-width: 1100px; margin: auto; padding: 28px 24px; }
+.shops-page h1 { margin-bottom: 8px; }
+.shop-form { padding: 20px 24px; background: white; margin-top: 24px; border-radius: 8px; border: 1px solid #dbe3de; }
+.shop-form form { display: grid; gap: 14px; }
+label { display: grid; gap: 6px; }
+input { font: inherit; padding: 10px 12px; border: 1px solid #aebfb5; border-radius: 4px; width: 100%; }
+.shop-form button { justify-self: start; }
+.error { color: #a62020; }
+.success { color: #245a42; }
+iframe { max-width: 100%; }
+@media (max-width: 600px) { .shops-page { padding: 20px 14px; } .shop-form { padding: 16px; } }
