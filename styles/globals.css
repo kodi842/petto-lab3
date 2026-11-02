@@ -17,3 +17,10 @@ input { font: inherit; padding: 10px 12px; border: 1px solid #aebfb5; border-rad
 .success { color: #245a42; }
 iframe { max-width: 100%; }
 @media (max-width: 600px) { .shops-page { padding: 20px 14px; } .shop-form { padding: 16px; } }
+.animal-page { max-width: 820px; }
+.animal-page fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 16px; }
+textarea { font: inherit; padding: 10px 12px; border: 1px solid #aebfb5; border-radius: 4px; width: 100%; resize: vertical; }
+.field-hint { color: #58655d; font-size: 14px; margin: -8px 0 0; }
+.animal-preview { max-width: 100%; max-height: 320px; border-radius: 6px; object-fit: contain; justify-self: start; }
+.primary-link { display: inline-block; background: #245a42; color: white; padding: 10px 18px; border-radius: 6px; text-decoration: none; }
+.secondary-button { background: transparent; color: #245a42; margin: 8px; border: 1px solid #aebfb5; }
